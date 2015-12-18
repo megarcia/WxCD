@@ -1,6 +1,7 @@
-# GT16_JGRA
+# GT16_JGRA Code and Data Supplement
 
-code and data supplement to Garcia and Townsend (in preparation)
+Accompanies Garcia and Townsend (in preparation): Climatological influences on the forest growing season around western Lake Superior, USA.
 
-code to follow upon submission!
+Python code package and supporting datasets will be posted here upon submission.
 
+Publication manuscript will be posted here upon acceptance.
