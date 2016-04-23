@@ -11,8 +11,8 @@ where (Garcia and Townsend, 2016) is this paper:
 
 The text citation in AMS style is:
 
-Garcia, M., and P.A. Townsend (in review): "Climatological influences on the forest 
-growing season around western Lake Superior, USA." Submitted to J. Geophys. Res. Atmos. 
-on 5 April 2016.
+Garcia, M., and P.A. Townsend (in review): "Climatological trends influencing forest 
+phenology around western Lake Superior, USA." Submitted to J. Geophys. Res. Atmos. on 5 
+April 2016.
 
 An updated citation and a pdf of the paper will be included with this software upon publication.

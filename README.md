@@ -4,7 +4,7 @@
 
 This software package for regional climatological analysis using NOAA NCEI GHCN-Daily datasets is a component of the author's Ph.D. dissertation research at the University of Wisconsin–Madison and accompanies the paper
 
-> Garcia, M., and P.A. Townsend (in review): Climatological influences on the forest growing season around western Lake Superior, USA. Submitted to the *Journal of Geophysical Research – Atmospheres* on 5 April 2016.
+> Garcia, M., and P.A. Townsend (in review): "Climatological trends influencing forest phenology around western Lake Superior, USA." Submitted to the *Journal of Geophysical Research – Atmospheres* on 5 April 2016.
 
 That paper manuscript will be included in this package upon acceptance for publication. The corresponding author is Matthew Garcia (<matt.e.garcia@gmail.com>). Prof. Townsend is the author's dissertation advisor.
 
@@ -53,8 +53,9 @@ which will
 
 1. verify scripts, modules, tools, sample data, documents, and auxiliary files
 2. verify availability of python dependencies used by the various scripts (listed below)
-3. build directory structure to receive script processing outputs
-4. copy source scripts, modules, and tools into main package directory, then archive the originals 
+3. uncompress certain large example data files
+4. build directory structure to receive script processing outputs
+5. copy source scripts, modules, and tools into main package directory, then archive the originals 
 
 [Back to top](#top)
 
