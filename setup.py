@@ -25,11 +25,12 @@ USAGE: 'python setup.py'
 
 PURPOSE: Verifies sample data, scripts, modules, documents, and auxiliary files.
          Verifies availability of python dependencies used by the various scripts.
+         Uncompresses certain large example data files
          Builds directory structure for script output products.
 
 DEPENDENCIES: all software package source dependencies are polled in this routine
 
-RUN TIME: ~30 sec
+RUN TIME: ~45 sec
 """
 
 import os, sys, glob
@@ -57,6 +58,8 @@ modules = ['Date_Convert.py','Interpolation.py','Plots.py','Read_Header_Files.py
 dependencies = ['os','sys','datetime','glob','numpy','pandas','h5py','pp','gdal',
                 'osgeo.osr','scipy.interpolate','scipy.ndimage','scipy.stats',
                 'matplotlib.pyplot']
+gz_data_files = ['EPA_L4_Ecoregions_WLS_UTM15N.bil.gz','NCEI_WLS_19830101-20151031.csv.gz',
+                 'NLCD_2011_WLS_UTM15N.bil.gz']
 data_files = ['EPA_L4_Ecoregions_WLS_polygonIDs.txt','EPA_L4_Ecoregions_WLS_UTM15N.bil',
               'EPA_L4_Ecoregions_WLS_UTM15N.hdr','NCEI_WLS_19830101-20151031.csv', 
               'NCEP_CPC_AMO_indices.csv','NCEP_CPC_AO_indices.csv','NCEP_CPC_ENSO_indices.csv',
@@ -243,11 +246,29 @@ if err > 0:
 message(' ')
 #
 message('checking for example data files that should accompany this software')
+gz_data_present = glob.glob('data/*.gz')
+absent = 0
+for gz_dfile in gz_data_files:
+    gz_dfile_path = 'data/%s' % gz_dfile
+    if gz_dfile_path in gz_data_present:
+        message('- found compressed data file \'%s\' as expected' % gz_dfile)
+        message('-- uncompressing \'%s\'' % gz_dfile)
+        os.system('cd data')
+        os.system('gunzip %s' % gz_dfile)
+        os.system('cd ..')
+    else:
+        message('- compressed example data file \'%s\' is absent' % gz_dfile)
+        absent += 1
+if absent > 0:
+    message('- you don\'t need these if you have your own data in the right formats')
+    message('- if you need the examples, you can find them at on GitHub at')
+    message('      https://github.com/megarcia/GT16_JGRA')
+#    
 data_present = glob.glob('data/*')
 absent = 0
 for dfile in data_files:
-    dfile = 'data/%s' % dfile
-    if dfile in data_present:
+    dfile_path = 'data/%s' % dfile
+    if dfile_path in data_present:
         message('- found data file \'%s\' as expected' % dfile)
     else:
         message('- example data file \'%s\' is absent' % dfile)
