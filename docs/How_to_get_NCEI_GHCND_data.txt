@@ -1,0 +1,62 @@
+Go to http://www.ncdc.noaa.gov/cdo-web/
+click "Mapping Tool" --> click "All Maps" tab --> click "GHCN Daily" (should be upper right selection)
+you should get a *world map* with tons of station locations marked (not just US stations)
+
+click off/on the station types that you want to include
+-- CoCoRaHS are cooperative (volunteer) precipitation stations (maybe)
+-- GHCN is the "official" cooperative daily reporting network (likely)
+-- WMO is the global network of official, government-run weather stations (definitely)
+
+move around and zoom until your desired area is within the map window
+click "Rectangle" option for area selection
+draw your rectangular area of interest
+-- this rectangle should be larger than your actual study area, by 20+ km on each side if possible
+
+results of station selection (now highlighted in yellow on map) come up in a new window
+-- NOTE: if your desired area has > 1000 stations, you may need to break it up into multiple requests by area
+-- select all with the upper left box in the window, or select individual stations 
+   --> now highlighted in blue on map
+once you have a good area selected with < 1000 stations, you'll want to write down the corner coordinates in case you need to replicate your area selection at another time. Just hold the selection arrow over a corner (NW or SW to start) and write down the coordinates of that point from the location shown in the lower right corner of the map window, then do the same for the opposite (SE or NE) corner. If you need to break up your request by area, you can use these coordinates to divide the region as needed while making sure you don't get any area overlap with duplicated stations selected.
+click "Get Selected Data" button --> new browser tab opens with data cart options
+
+In new "Data Cart" browser tab
+--> select "Custom GHCN-Daily CSV"
+--> fill in your desired date range 
+    -- note that some stations may have no data within your selected date range, will be automatically excluded
+click "Continue" at bottom of page
+
+On "Custom Options" page select data fields to be included
+-- to work with process_NCEI_00.py you need *at least* the following fields in your dataset:
+   ['STATION','STATION_NAME','ELEVATION','LATITUDE','LONGITUDE','DATE','PRCP','PRCP_M_FLAG','PRCP_Q_FLAG','TMAX','TMAX_M_FLAG','TMAX_Q_FLAG','TMIN','TMIN_M_FLAG','TMIN_Q_FLAG']
+   --> select the checkboxes for "Station name"
+                                 "Geographic location"
+                                 "Include data flags"
+   --> select by "Date filter" if desired -- maybe you only want summer obs, or only January, or only the 1st of the month... 
+   --> expand the (+) for "Precipitation" and check the box for "Precipitation (tenths of mm) (PRCP)"
+   --> expand the (+) for "Air Temperature" and check the boxes for "Maximum temperature (tenths of degrees C) (TMAX)"
+                                                                    "Minimum temperature (tenths of degrees C) (TMIN)"
+   these are the *minimum* data fields required for daily climatological analysis, but you could explore/request other data options as desired
+   -- NOTE: not all stations provide valid or reliable data for all variables! (lots of specific caveats depend on station type)
+click "Continue" at bottom of page
+
+-- NOTE: you may get error messages at top of page based on request size (>5000 station-years or >1GB results file)
+         the system does not have an option to break up your request into multiple orders automatically
+         you will need to adjust your area, stations, and date selections accordingly (and manually)
+         since the map area selection and the data contents selection are in separate tabs/windows, you probably won't need to re-do the map part, so at least your station/area selection will remain the same
+         the easiest way to break up an order for size limitations is by date, then get the multiple orders and concatenate the csv files before further cleaning/processing (note that each csv file has its own header line with column names, which you'll want to remove from all but the 1st file before you concatenate them)
+         at this point, you can still use your browser "back" button to go back one page, change your date range, and "Continue" --> "Continue" to check your request size
+
+if no error messages regarding request size, you'll get the "Review Order" page
+-- MAKE SURE that the "Data Types" option lists *at least* "PRCP, TMAX, TMIN"
+enter your email address, enter it again to confirm, then click "Submit Order"
+
+get a "Data Order Confirmation" page (you should receive this confirmation by email as well)
+--> when processing is completed, NCEI/CDO will email you a link to your data order, normally anywhere from an hour to a day depending on your request size
+
+close that window/tab in your browser (once you've submitted the order, you can't go back to modify things via your browser's "back" button)
+--> return to the map interface, which should still have your area selection in place, and do everything after that again as needed in order to get your entire desired dataset
+
+If you are not familiar with CDO/GHCND data, you will probably want the documentation that is currently at
+  http://www1.ncdc.noaa.gov/pub/data/cdo/documentation/GHCND_documentation.pdf
+  http://www1.ncdc.noaa.gov/pub/data/cdo/samples/GHCND_sample_csv.csv
+The organization of the data and the descriptions/definitions of the data flags are probably most useful
