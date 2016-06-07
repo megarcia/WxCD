@@ -36,6 +36,8 @@ INPUT: A '.csv' file containing lat/lon/date of each query
 OUTPUT: New '.csv' file with original location/date input and several new columns
 
 RUN TIME: fast enough
+
+TO DO: add more returned variables
 """
 
 import os, sys, datetime, glob
@@ -58,7 +60,7 @@ def pad(x):
     return str
 
 message(' ')
-message('wx_query.py started at %s' % datetime.datetime.now().isoformat())
+message('query_NCEI_grids.py started at %s' % datetime.datetime.now().isoformat())
 message(' ')
 #
 if len(sys.argv) < 2:
@@ -194,9 +196,9 @@ arr_df.to_csv(out_csvfile)
 message('wrote %s' % out_csvfile)
 message(' ')
 #
-message('wx_query.py completed at %s' % datetime.datetime.now().isoformat())
+message('query_NCEI_grids.py completed at %s' % datetime.datetime.now().isoformat())
 message(' ')
 sys.exit(0)
 
-# end wx_query.py
+# end query_NCEI_grids.py
 
