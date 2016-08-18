@@ -126,12 +126,12 @@ for i in range(0,len(query_D)):
         wx_NWeasting = np.copy(h5file['grid/min_x'])
         wx_dx = np.copy(h5file['grid/dx'])
         wx_ncols = np.copy(h5file['grid/ncols'])
-        query_row = ((query_N[i] - wx_SEnorthing) // wx_dy)
+        query_row = ((wx_NWnorthing - query_N[i]) // wx_dy)
         if query_row < 0:
-            message('- location is south of available grid limits')
+            message('- location is north of available grid limits')
             continue
         if query_row > wx_nrows:
-            message('- location is north of available grid limits')
+            message('- location is south of available grid limits')
             continue
         query_col = ((query_E[i] - wx_NWeasting) // wx_dx)
         if query_col < 0:
