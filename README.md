@@ -4,7 +4,7 @@
 
 This software package for regional climatological analysis using NOAA NCEI GHCN-Daily datasets is a component of the author's Ph.D. dissertation research at the University of Wisconsin–Madison and accompanies the paper
 
-> Garcia, M., and P.A. Townsend (in review): "Climatological trends influencing forest phenology around western Lake Superior, USA." Submitted to the *Journal of Geophysical Research – Atmospheres* on 5 April 2016.
+> Garcia, M., and P.A. Townsend (in review): "Recent climatological trends and potential influences on forest phenology around western Lake Superior, USA." Submitted to the *Journal of Geophysical Research – Atmospheres* on 5 April 2016, revised 20 August 2016.
 
 That paper manuscript will be included in this package upon acceptance for publication. The corresponding author is Matthew Garcia (<matt.e.garcia@gmail.com>). Prof. Townsend is the author's dissertation advisor.
 

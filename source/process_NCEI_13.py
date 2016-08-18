@@ -16,9 +16,9 @@ remain intact. Treat others as you would be treated. Pay it forward. Valar dohae
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
 
 REFERENCE: If you use this software, please reference the following in your work products:
-               Garcia, M., and P.A. Townsend, in review: "Climatological trends influencing 
-               forest phenology around western Lake Superior, USA." Submitted to J. Geophys. 
-               Res. Atmos. on 5 April 2016.
+               Garcia, M., and P.A. Townsend (in review): "Recent climatological trends and 
+               potential influences on forest phenology around western Lake Superior, USA." 
+               Submitted to J. Geophys. Res. Atmos. on 5 April 2016, revised 20 August 2016.
            See also 'README.md', 'CITATION.txt', and 'ACKNOWLEDGEMENTS.txt' for more information.
 
 USAGE: 'python process_NCEI_13.py 1984 2013 ./analyses'
