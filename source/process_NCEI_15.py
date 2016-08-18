@@ -211,7 +211,7 @@ message('- ice-off date regression: slope = %.2f  r = %.3f  p = %.4f' % (slope,r
 slope, intercept, r_value, p_value, std_err = linregress(xvals*mask,ice_duration*mask)
 message('- ice duration regression: slope = %.2f  r = %.3f  p = %.4f' % (slope,r_value,p_value))
 #
-fname = '%s/../data/NCEP_CPC_PDO_indices.csv' % path
+fname = '%s/../data/NOAA_ESRL_PDO_indices.csv' % path
 message('retrieving climatology data from %s' % fname)
 pdo_winter, pdo_spring, pdo_summer, pdo_autumn = get_ao_idx(fname, year_begin, (year_end + 1))
 #
@@ -223,7 +223,7 @@ fname = '%s/../data/NCEP_CPC_PNA_indices.csv' % path
 message('retrieving climatology data from %s' % fname)
 pna_winter, pna_spring, pna_summer, pna_autumn = get_ao_idx(fname, year_begin, (year_end + 1))
 #
-fname = '%s/../data/NCEP_CPC_AMO_indices.csv' % path
+fname = '%s/../data/NOAA_ESRL_AMO_indices.csv' % path
 message('retrieving climatology data from %s' % fname)
 amo_winter, amo_spring, amo_summer, amo_autumn = get_ao_idx(fname, year_begin, (year_end + 1))
 #

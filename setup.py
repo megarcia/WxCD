@@ -62,9 +62,9 @@ gz_data_files = ['EPA_L4_Ecoregions_WLS_UTM15N.bil.gz','NCEI_WLS_19830101-201510
                  'NLCD_2011_WLS_UTM15N.bil.gz']
 data_files = ['EPA_L4_Ecoregions_WLS_polygonIDs.txt','EPA_L4_Ecoregions_WLS_UTM15N.bil',
               'EPA_L4_Ecoregions_WLS_UTM15N.hdr','NCEI_WLS_19830101-20151031.csv', 
-              'NCEP_CPC_AMO_indices.csv','NCEP_CPC_AO_indices.csv','NCEP_CPC_ENSO_indices.csv',
-              'NCEP_CPC_NAO_indices.csv','NCEP_CPC_PDO_indices.csv','NCEP_CPC_PNA_indices.csv',
-              'NLCD_2011_WLS_UTM15N.bil','NLCD_2011_WLS_UTM15N.hdr','NSIDC_MIFL_Superior_Ice.csv',
+              'NCEP_CPC_AO_indices.csv','NCEP_CPC_ENSO_indices.csv','NCEP_CPC_NAO_indices.csv',
+              'NCEP_CPC_PNA_indices.csv','NLCD_2011_WLS_UTM15N.bil','NLCD_2011_WLS_UTM15N.hdr',
+              'NOAA_ESRL_AMO_indices.csv','NOAA_ESRL_PDO_indices.csv','NSIDC_MIFL_Superior_Ice.csv',
               'Query_locations_dates_sample.csv']
 doc_files = ['How_to_get_NCEI_GHCND_data.txt','NCEI_GHCND_documentation.pdf']
 tools = ['query_NCEI_grids.py']
