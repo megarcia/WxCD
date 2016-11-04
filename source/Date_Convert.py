@@ -6,35 +6,25 @@ University of Wisconsin - Madison
 matt.e.garcia@gmail.com
 
 Copyright (C) 2015-2016 by Matthew Garcia
-
-DISTRIBUTION and USE subject to 'LICENSE_GnuGPLv3.txt' and 'DISCLAIMER.txt' that accompany 
-this file. This file is provided FREE OF COST and WITHOUT the author's WARRANTY or LIABILITY 
-in any manner whatsoever. This file may be redistributed by the USER as long as the above 
-AUTHORSHIP and COPYRIGHT, this statement, and the accompanying LICENSE and DISCLAIMER files 
-remain intact. Treat others as you would be treated. Pay it forward. Valar dohaeris.
-
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
+Treat others as you would be treated. Pay it forward. Valar dohaeris.
 
-REFERENCE: If you use this software, please reference the following in your work products:
-               Garcia, M., and P.A. Townsend (in review): "Recent climatological trends and 
-               potential influences on forest phenology around western Lake Superior, USA." 
-               Submitted to J. Geophys. Res. Atmos. on 5 April 2016, revised 20 August 2016.
-           See also 'README.md', 'CITATION.txt', and 'ACKNOWLEDGEMENTS.txt' for more information.
-
-USAGE: insert 'from Date_Convert import *' line near head of script, then (for example)
-           doy_X = date_to_doy(year, date_X) # date_X is an integer in mmdd format (without leading 0)
-           date_X = doy_to_date(year, doy_X) # date_X will be an integer in mmdd format (without leading 0)
+USAGE: insert 'from Date_Convert import *' near head of script, then
+       (for example)
+        # date_X is an integer in mmdd format (without leading 0)
+        doy_X = date_to_doy(year, date_X)
+        # date_X will be an integer in mmdd format (without leading 0)
+        date_X = doy_to_date(year, doy_X)
 
 PURPOSE: Conversion between DOY and calendar date
 
 DEPENDENCIES: None
 
-INPUT: Provided by calling script
+INPUT: date/doy provided by calling script
 
-OUTPUT: Returned to calling script
-
-RUN TIME: negligible
+OUTPUT: date/doy returned to calling script
 """
+
 
 def is_leapyear(y):
     leap = 0
@@ -45,10 +35,11 @@ def is_leapyear(y):
             leap = 1
     return leap
 
+
 def date_to_doy(year, mmdd):
     days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     if is_leapyear(year):
-        days_in_month[1] += 1    
+        days_in_month[1] += 1
     mm = mmdd // 100
     dd = mmdd % 100
     if mm == 1:
@@ -57,12 +48,13 @@ def date_to_doy(year, mmdd):
         doy = sum(days_in_month[:(mm - 1)]) + dd
     return doy
 
+
 def doy_to_date(year, doy):
     days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     if is_leapyear(year):
-        days_in_month[1] += 1    
-    accumulated_days = 0  
-    for i in range(0,len(days_in_month)):
+        days_in_month[1] += 1
+    accumulated_days = 0
+    for i in range(0, len(days_in_month)):
         next_accumulated_days = accumulated_days + days_in_month[i]
         if doy > next_accumulated_days:
             accumulated_days = next_accumulated_days
