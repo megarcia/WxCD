@@ -36,9 +36,10 @@ import h5py as hdf
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
-import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
 from UTM_Geo_Convert import utm_to_geographic
+mpl.use('Agg')
+import matplotlib.pyplot as plt
 
 
 def message(char_string):
