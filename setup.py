@@ -55,8 +55,9 @@ modules = ['Date_Convert.py', 'Interpolation.py', 'Plots.py',
            'UTM_Geo_Convert.py']
 #
 dependencies = ['os', 'sys', 'datetime', 'glob', 'numpy', 'pandas', 'h5py',
-                'pp', 'matplotlib.pyplot', 'gdal', 'osgeo.osr',
-                'scipy.interpolate', 'scipy.ndimage', 'scipy.stats']
+                'matplotlib', 'matplotlib.pyplot', 'gdal', 'osgeo.osr',
+                'scipy.interpolate', 'scipy.ndimage', 'scipy.stats',
+                'mpl_toolkits', 'mpl_toolkits.basemap']
 #
 gz_data_files = ['EPA_L4_Ecoregions_WLS_UTM15N.bil.gz',
                  'NCEI_WLS_19830101-20151031.csv.gz',
@@ -215,15 +216,6 @@ except ImportError:
     message('- essential python dependency \'h5py\' is not available')
     err += 1
 try:
-    import pp
-    message('- python dependency \'pp\' is available')
-except ImportError:
-    message('- essential python dependency \'pp\' (ParallelPython) is not \
-            available')
-    message('  (it\'s essential for now, until I develop serial versions of \
-            several routines)')
-    err += 1
-try:
     import gdal
     message('- python dependency \'gdal\' is available')
 except ImportError:
@@ -255,12 +247,32 @@ except ImportError:
     message('- essential python dependency \'scipy.stats\' is not available')
     err += 1
 try:
+    import matplotlib
+    message('- python dependency \'matplotlib\' is available')
+except ImportError:
+    message('- essential python dependency \'matplotlib\' is not available')
+    err += 1
+try:
     import matplotlib.pyplot
     message('- python dependency \'matplotlib.pyplot\' is available')
 except ImportError:
     message('- essential python dependency \'matplotlib.pyplot\' is not \
             available')
     err += 1
+try:
+    import mpl_toolkits
+    message('- python dependency \'mpl_toolkits\' is available')
+except ImportError:
+    message('- essential python dependency \'mpl_toolkits\' is not available')
+    err += 1
+try:
+    import mpl_toolkits.basemap
+    message('- python dependency \'mpl_toolkits.basemap\' is available')
+except ImportError:
+    message('- essential python dependency \'mpl_toolkits.basemap\' is not \
+            available')
+    err += 1
+#
 if err > 0:
     message('- you need to install one or more additional python packages for \
             this software to work')
