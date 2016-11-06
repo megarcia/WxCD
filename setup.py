@@ -9,14 +9,14 @@ Copyright (C) 2015-2016 by Matthew Garcia
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
 
-USAGE: '$ python setup.py'
-
 PURPOSE: Verifies sample data, scripts, modules, documents, auxiliary files.
          Verifies availability of python dependencies used by various scripts.
          Uncompresses certain large example data files
          Builds directory structure for script output products.
 
 DEPENDENCIES: all software package source dependencies are polled here
+
+USAGE: '$ python setup.py'
 """
 
 

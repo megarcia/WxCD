@@ -9,11 +9,11 @@ Copyright (C) 2015-2016 by Matthew Garcia
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
 
-USAGE: 'python process_NCEI_01.py NCEI_WLS_20000101-20101231 ./data'
-
 PURPOSE: Extract daily station data from cleaned NOAA/NCEI dataset
 
 DEPENDENCIES: h5py, numpy, pandas
+
+USAGE: 'python process_NCEI_01.py NCEI_WLS_20000101-20101231 ./data'
 
 INPUT: '.csv' and '.h5' output from process_NCEI_00.py
 

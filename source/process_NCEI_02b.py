@@ -1,5 +1,5 @@
 """
-Python script 'process_NCEI_02_serial.py'
+Python script 'process_NCEI_02b.py'
 by Matthew Garcia, PhD student
 Dept. of Forest and Wildlife Ecology
 University of Wisconsin - Madison
@@ -9,22 +9,14 @@ Copyright (C) 2015-2016 by Matthew Garcia
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
 
-USAGE: 'python process_NCEI_02_serial.py NLCD_2011_WLS_UTM15N
-        NCEI_WLS_19840101-20131231 ./grids 500 RBF 1'
-
-NOTES: [NCEI_WLS_19840101-20131231] is the '_processed.h5' file prefix in your
-       'data/' directory
-       [500] is the (default) output grid resolution in meters
-       [RBF] is the (default) interpolation method (see below for choices)
-       [1] is the (default) flag to plot the resulting daily grids
-
 PURPOSE: Gridded interpolation of daily PRCP/TMAX/TMIN station data from
          cleaned NOAA/NCEI dataset via user's method of choice.
-         RBF: multiquadric radial basis functions, a SciPy built-in method
-         CSP: cubic splines via griddata, a SciPy built-in method
-         BSP: bivariate cubic B-splines, a SciPy built-in method
-         IDW: inverse-distance-squared for temperature and -cubed for
-              precipitation
+
+CHOICES: RBF - multiquadric radial basis functions, a SciPy built-in method
+         CSP - cubic splines via griddata, a SciPy built-in method
+         BSP - bivariate cubic B-splines, a SciPy built-in method
+         IDW - inverse-distance-squared for temperature and -cubed for
+               precipitation
 
 NOTES: RBF is an exact full-domain method with an excellent daily processing
        time. CSP is just about as fast but may not cover the whole desired
@@ -38,6 +30,15 @@ NOTES: RBF is an exact full-domain method with an excellent daily processing
 DEPENDENCIES: h5py, numpy
               'UTM_Geo_Convert', 'Interpolation', and 'Plots' modules
               (which have their own requirements)
+
+USAGE: 'python process_NCEI_02b.py NLCD_2011_WLS_UTM15N
+        NCEI_WLS_19840101-20131231 ./grids 500 RBF 1'
+
+NOTES: <NCEI_WLS_19840101-20131231> is the '_processed.h5' file prefix in your
+       'data/' directory
+       <500> is the (default) output grid resolution in meters
+       <RBF> is the (default) interpolation method
+       <1> is the (default) flag to plot the resulting daily grids
 
 INPUT: '.h5' output file from process_NCEI_01.py (or process_NCEI_02a.py)
        A header file corresponding to your study region's map boundaries
@@ -160,7 +161,7 @@ def process_grid_rbf(xgrid, ygrid, stns_e, stns_n, stns_vals):
 
 
 message(' ')
-message('process_NCEI_02_serial.py started at %s' %
+message('process_NCEI_02b.py started at %s' %
         datetime.datetime.now().isoformat())
 message(' ')
 #
@@ -459,9 +460,9 @@ for date in dates:
                    max_y, grid_tavg, UTMzone, titlestr, filename, stations=0)
     message(' ')
 #
-message('process_NCEI_02_serial.py completed at %s' %
+message('process_NCEI_02b.py completed at %s' %
         datetime.datetime.now().isoformat())
 message(' ')
 sys.exit(0)
 
-# end process_NCEI_02_serial.py
+# end process_NCEI_02b.py

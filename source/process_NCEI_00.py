@@ -9,19 +9,19 @@ Copyright (C) 2015-2016 by Matthew Garcia
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
 
-USAGE: 'python process_NCEI_00.py NCEI_WLS_20000101-20101231.csv ./data'
-
 PURPOSE: QA/QC of daily meteorological station data in NOAA/NCEI datasets
 
 DEPENDENCIES: h5py, numpy, pandas
 
+USAGE: 'python process_NCEI_00.py NCEI_WLS_20000101-20101231.csv ./data'
+
 INPUT: Station meteorological data from NOAA/NCEI in '.csv' format (one file)
 
-NOTE: The labels in <metvals> are the minimum information that you should
-      request from the NCEI data server. Check your '.csv' file header line to
-      make sure these columns are present. Additional columns will be removed
-      (inside this routine, not from your original data csv file) to reduce
-      memory footprint.
+NOTE: The labels in <metvals> (line 104) are the minimum information that you
+      should request from the NCEI data server. Check your '.csv' file header
+      line to make sure these columns are present. Additional columns will be
+      removed (inside this routine, not from your original data csv file) to
+      reduce memory footprint.
 
 OUTPUT: One '.csv' file with the 'cleaned' version of the input dataset
         One '.csv' file with an accounting of the 'errors' cleaned,

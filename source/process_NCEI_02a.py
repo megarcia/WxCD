@@ -1,5 +1,5 @@
 """
-Python script 'process_NCEI_02_preprocess.py'
+Python script 'process_NCEI_02a.py'
 by Matthew Garcia, PhD student
 Dept. of Forest and Wildlife Ecology
 University of Wisconsin - Madison
@@ -9,15 +9,15 @@ Copyright (C) 2015-2016 by Matthew Garcia
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
 
-USAGE: 'python process_NCEI_02_preprocess.py NCEI_WLS_19830101-20131231 ./data'
-
-NOTES: [NCEI_WLS_19840101-20131231] is the '_processed.h5' file prefix in your
-       'data/' directory
-
 PURPOSE: Splits multi-year processed meteorological data file into individual
          years for separate/parallel use
 
 DEPENDENCIES: h5py, numpy
+
+USAGE: 'python process_NCEI_02a.py NCEI_WLS_19830101-20131231 ./data'
+
+NOTES: <NCEI_WLS_19840101-20131231> is the '_processed.h5' file prefix in your
+       'data/' directory
 
 INPUT: '.h5' output from process_NCEI_01.py
 
@@ -41,7 +41,7 @@ def message(char_string):
 
 
 message(' ')
-message('process_NCEI_02_preprocess.py started at %s' %
+message('process_NCEI_02a.py started at %s' %
         datetime.datetime.now().isoformat())
 message(' ')
 #
@@ -52,7 +52,7 @@ else:
     path = sys.argv[2]
 #
 if len(sys.argv) < 2:
-    message('input error: need prefix for weather data h5 file')
+    message('input error: need prefix for weather station data h5 file')
     sys.exit(1)
 else:
     NCEIfname = sys.argv[1]
@@ -129,9 +129,9 @@ for date in all_dates:
         h5outfile.create_dataset(datepath + '/tmin_vals', data=tmin_vals)
 message(' ')
 #
-message('process_NCEI_02_preprocess.py completed at %s' %
+message('process_NCEI_02a.py completed at %s' %
         datetime.datetime.now().isoformat())
 message(' ')
 sys.exit(0)
 
-# end process_NCEI_02_preprocess.py
+# end process_NCEI_02a.py
