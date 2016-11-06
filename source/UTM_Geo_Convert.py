@@ -8,19 +8,21 @@ matt.e.garcia@gmail.com
 Copyright (C) 2015-2016 by Matthew Garcia
 heavily modified from python source code found at
 http://stackoverflow.com/questions/343865/how-to-convert-from-utm-to-latlng-in-python-or-javascript/10239676
+Licensed Gnu GPL v3; see 'LICENSE_GnuGPLv3.txt' for complete terms
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
+See also 'README.md', 'DISCLAIMER.txt', 'CITATION.txt', 'ACKNOWLEDGEMENTS.txt'
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
+
+PURPOSE: Conversion between UTM and geographic coordinates, or from one UTM
+         zone to another
+
+DEPENDENCIES: osgeo.osr (uses gdal)
 
 USAGE: insert 'from UTM_Geo_Convert import *' near head of script, then
        (for example)
         UTM_coords = geographic_to_utm(stn_lon, stn_lat, UTMzone)
         stn_easting = int(round(UTM_coords[1],0))
         stn_northing = int(round(UTM_coords[2],0))
-
-PURPOSE: Conversion between UTM and geographic coordinates, or from one UTM
-         zone to another
-
-DEPENDENCIES: osgeo.osr (uses gdal)
 
 INPUT: coordinates provided by calling script
 

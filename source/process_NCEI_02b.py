@@ -6,7 +6,9 @@ University of Wisconsin - Madison
 matt.e.garcia@gmail.com
 
 Copyright (C) 2015-2016 by Matthew Garcia
+Licensed Gnu GPL v3; see 'LICENSE_GnuGPLv3.txt' for complete terms
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
+See also 'README.md', 'DISCLAIMER.txt', 'CITATION.txt', 'ACKNOWLEDGEMENTS.txt'
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
 
 PURPOSE: Gridded interpolation of daily PRCP/TMAX/TMIN station data from
@@ -32,7 +34,7 @@ DEPENDENCIES: h5py, numpy
               'UTM_Geo_Convert', 'Interpolation', and 'Plots' modules
               (which have their own requirements)
 
-USAGE: 'python process_NCEI_02b.py NLCD_2011_WLS_UTM15N
+USAGE: '$ python process_NCEI_02b.py NLCD_2011_WLS_UTM15N
         NCEI_WLS_19840101-20131231 ./grids 500 RBF 1'
 
 NOTES: <NCEI_WLS_19840101-20131231> is the '_processed.h5' file prefix in your

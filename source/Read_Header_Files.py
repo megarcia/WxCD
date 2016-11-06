@@ -6,17 +6,19 @@ University of Wisconsin - Madison
 matt.e.garcia@gmail.com
 
 Copyright (C) 2015-2016 by Matthew Garcia
+Licensed Gnu GPL v3; see 'LICENSE_GnuGPLv3.txt' for complete terms
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
+See also 'README.md', 'DISCLAIMER.txt', 'CITATION.txt', 'ACKNOWLEDGEMENTS.txt'
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
-
-USAGE: insert 'from Read_Header_Files import *' line near head of script,
-       then call individual routine(s) as indicated
 
 PURPOSE: Obtain grid information from '.hdr' files associated with '.bil'
          datasets (based on the '.hdr' file structure typical to ArcGIS output
          processes)
 
 DEPENDENCIES: None
+
+USAGE: insert 'from Read_Header_Files import *' line near head of script,
+       then call individual routine(s) as indicated
 
 INPUT: filename (with path) provided by calling script
 

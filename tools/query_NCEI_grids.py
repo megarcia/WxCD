@@ -6,16 +6,18 @@ University of Wisconsin - Madison
 matt.e.garcia@gmail.com
 
 Copyright (C) 2015-2016 by Matthew Garcia
+Licensed Gnu GPL v3; see 'LICENSE_GnuGPLv3.txt' for complete terms
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
+See also 'README.md', 'DISCLAIMER.txt', 'CITATION.txt', 'ACKNOWLEDGEMENTS.txt'
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
-
-USAGE: '$ python query_NCEI_grids.py locations_dates.csv'
 
 PURPOSE: Query grids of climatological derivatives at given locations and dates
 
 DEPENDENCIES: Some standard libraries/modules
               The h5py module is required for handling of HDF5 files
               The 'UTM_Geo_Convert' module has its own requirements
+
+USAGE: '$ python query_NCEI_grids.py locations_dates.csv'
 
 INPUT: A '.csv' file containing lat/lon/date of each query
        Output files from process_NCEI_03.py script in '.h5' format

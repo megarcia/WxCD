@@ -6,11 +6,10 @@ University of Wisconsin - Madison
 matt.e.garcia@gmail.com
 
 Copyright (C) 2015-2016 by Matthew Garcia
+Licensed Gnu GPL v3; see 'LICENSE_GnuGPLv3.txt' for complete terms
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
+See also 'README.md', 'DISCLAIMER.txt', 'CITATION.txt', 'ACKNOWLEDGEMENTS.txt'
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
-
-USAGE: insert 'from Plots import *' line near head of script, then call
-       individual plotting routines as indicated
 
 PURPOSE: Plot T/P maps
               daily/seasonal/annual time series
@@ -20,12 +19,13 @@ DEPENDENCIES: sys, numpy, matplotlib, scipy
               The 'Date_Convert' module has no external requirements
               The 'UTM_Geo_Convert' module has its own requirements
 
+USAGE: insert 'from Plots import *' line near head of script, then call
+       individual plotting routines as indicated
+
 INPUT: arrays and other plot info provided by calling script
 
 OUTPUT: New '.png' files in a location specified by variable <fname>
         in most cases
-
-RUN TIME: very small (plot generation)
 """
 
 

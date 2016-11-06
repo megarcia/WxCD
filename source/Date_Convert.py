@@ -6,8 +6,14 @@ University of Wisconsin - Madison
 matt.e.garcia@gmail.com
 
 Copyright (C) 2015-2016 by Matthew Garcia
+Licensed Gnu GPL v3; see 'LICENSE_GnuGPLv3.txt' for complete terms
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
+See also 'README.md', 'DISCLAIMER.txt', 'CITATION.txt', 'ACKNOWLEDGEMENTS.txt'
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
+
+PURPOSE: Conversion between DOY and calendar date
+
+DEPENDENCIES: None
 
 USAGE: insert 'from Date_Convert import *' near head of script, then
        (for example)
@@ -15,10 +21,6 @@ USAGE: insert 'from Date_Convert import *' near head of script, then
         doy_X = date_to_doy(year, date_X)
         # date_X will be an integer in mmdd format (without leading 0)
         date_X = doy_to_date(year, doy_X)
-
-PURPOSE: Conversion between DOY and calendar date
-
-DEPENDENCIES: None
 
 INPUT: date/doy provided by calling script
 

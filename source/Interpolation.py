@@ -9,15 +9,17 @@ Copyright (C) 2015-2016 by Matthew Garcia
 portions based on python source code found at
 http://stackoverflow.com/questions/3104781/inverse-distance-weighted-idw-interpolation-with-python
 http://stackoverflow.com/questions/12729228/simple-efficient-bilinear-interpolation-of-images-in-numpy-and-python
+Licensed Gnu GPL v3; see 'LICENSE_GnuGPLv3.txt' for complete terms
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
+See also 'README.md', 'DISCLAIMER.txt', 'CITATION.txt', 'ACKNOWLEDGEMENTS.txt'
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
-
-USAGE: insert 'import Interpolation' line near head of script
-       see usage examples in 'process_NCEI_02.py'
 
 PURPOSE: Interpolation from irregular station networks to regular grids
 
 DEPENDENCIES: numpy, scipy
+
+USAGE: insert 'import Interpolation' line near head of script
+       see usage examples in 'process_NCEI_02.py'
 
 INPUT: location/value arrays rovided by calling script
 

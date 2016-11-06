@@ -6,7 +6,9 @@ University of Wisconsin - Madison
 matt.e.garcia@gmail.com
 
 Copyright (C) 2015-2016 by Matthew Garcia
+Licensed Gnu GPL v3; see 'LICENSE_GnuGPLv3.txt' for complete terms
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
+See also 'README.md', 'DISCLAIMER.txt', 'CITATION.txt', 'ACKNOWLEDGEMENTS.txt'
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
 
 PURPOSE: Splits multi-year processed meteorological data file into individual
@@ -14,7 +16,7 @@ PURPOSE: Splits multi-year processed meteorological data file into individual
 
 DEPENDENCIES: h5py, numpy
 
-USAGE: 'python process_NCEI_02a.py NCEI_WLS_19830101-20131231 ./data'
+USAGE: '$ python process_NCEI_02a.py NCEI_WLS_19830101-20131231 ./data'
 
 NOTES: <NCEI_WLS_19840101-20131231> is the '_processed.h5' file prefix in your
        'data/' directory

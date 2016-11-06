@@ -6,8 +6,15 @@ University of Wisconsin - Madison
 matt.e.garcia@gmail.com
 
 Copyright (C) 2015-2016 by Matthew Garcia
+Licensed Gnu GPL v3; see 'LICENSE_GnuGPLv3.txt' for complete terms
 Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
+See also 'README.md', 'DISCLAIMER.txt', 'CITATION.txt', 'ACKNOWLEDGEMENTS.txt'
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
+
+PURPOSE: Importing and process teleconnection time series from data files
+
+DEPENDENCIES: numpy, pandas
+              The 'Date_Convert' module has no external requirements
 
 USAGE: insert 'from Teleconnections import *' near head of script, then
        (for example)
@@ -17,11 +24,6 @@ USAGE: insert 'from Teleconnections import *' near head of script, then
             get_ao_idx(fname, year_begin, (year_end + 1))
         nino3, nino4, nino34 = \
             get_nino_idx(fname, year_begin, (year_end + 1))
-
-PURPOSE: Importing and process teleconnection time series from data files
-
-DEPENDENCIES: numpy, pandas
-              The 'Date_Convert' module has no external requirements
 
 INPUT: filename (with path) and desired years provided by calling script
 
