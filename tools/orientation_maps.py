@@ -19,7 +19,10 @@ USAGE: '$ python orientation_maps.py NCEI_WLS_19830101-20151031_stnmeta.csv
 
 INPUT: <NCEI_WLS_19830101-20151031_stnmeta.csv> is an output of
        process_NCEI_01.py
-       <clipped_ecoregions.h5> is an output of process_NCEI_0x.py
+       <clipped_ecoregions.h5> is an output of process_NCEI_08.py
+
+NOTE: run this script *after* you've run process_NCEI_01.py and _08.py so that
+      the proper input files are in place
 
 OUTPUT: 2 '.png' map figures
 """
