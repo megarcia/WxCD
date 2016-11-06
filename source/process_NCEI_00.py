@@ -13,7 +13,7 @@ PURPOSE: QA/QC of daily meteorological station data in NOAA/NCEI datasets
 
 DEPENDENCIES: h5py, numpy, pandas
 
-USAGE: 'python process_NCEI_00.py NCEI_WLS_20000101-20101231.csv ./data'
+USAGE: '$ python process_NCEI_00.py NCEI_WLS_20000101-20101231.csv ./data'
 
 INPUT: Station meteorological data from NOAA/NCEI in '.csv' format (one file)
 
@@ -26,12 +26,13 @@ NOTE: The labels in <metvals> (line 104) are the minimum information that you
 OUTPUT: One '.csv' file with the 'cleaned' version of the input dataset
         One '.csv' file with an accounting of the 'errors' cleaned,
             by station and variable
+        One '.csv' file with station metadata information
         One '.h5' file with preliminary metadata
 
-TO DO: add more data cleaning functionality, e.g. wild P reports
-       examine station-by-station error statistics for spatial patterns
-       extract names/locations of stations for mapping, incl. differentiation
-           of data provided (T only, P only, T & P)
+TODO: add more data cleaning functionality, e.g. wild P reports
+      examine station-by-station error statistics for spatial patterns
+      extract names/locations of stations for mapping, incl. differentiation
+      of data provided (T only, P only, T & P)
 """
 
 
@@ -94,6 +95,7 @@ else:
     NCEIfname = '%s/%s' % (path, sys.argv[1])
 cleaneddatafile = '%s_cleaned.csv' % NCEIfname[:-4]
 errorsdatafile = '%s_errors.csv' % NCEIfname[:-4]
+stnmetadatafile = '%s_stnmeta.csv' % NCEIfname[:-4]
 h5outfname = '%s_processed.h5' % NCEIfname[:-4]
 #
 message('reading input data file %s' % NCEIfname)
@@ -601,11 +603,37 @@ med_stns = np.median(date_counts)
 message('-- median %d station entries per date' % med_stns)
 message(' ')
 #
+# dataset summary by variable
+message('- %d total stations' % len(stn_id))
+message('- %d unique dates from %s to %s' %
+        (len(dates), str(dates[0]), str(dates[-1])))
+lats = np.zeros((len(stn_id)))
+lons = np.zeros((len(stn_id)))
+ndates = np.zeros((len(stn_id))).astype(int)
+nprcp = np.zeros((len(stn_id))).astype(int)
+ntmax = np.zeros((len(stn_id))).astype(int)
+ntmin = np.zeros((len(stn_id))).astype(int)
+for i in range(len(stn_id)):
+    message('-- processing station %s' % stn_id[i])
+    stndata_subset = stndata_df[stndata_df['STATION'] == stn_id[i]]
+    lats[i] = list(stndata_subset['LATITUDE'])[-1]
+    lons[i] = list(stndata_subset['LONGITUDE'])[-1]
+    ndates[i] = len(list(stndata_subset['DATE']))
+    nprcp[i] = sum(list(stndata_subset['PRCP'] != -9999))
+    ntmax[i] = sum(list(stndata_subset['TMAX'] != -9999))
+    ntmin[i] = sum(list(stndata_subset['TMIN'] != -9999))
+stnmeta_df = pd.DataFrame({'STATION': stn_id, 'LATITUDE': lats,
+                           'LONGITUDE': lons, 'NDATES': ndates,
+                           'NPRCP': nprcp, 'NTMAX': ntmax, 'NTMIN': ntmin})
+message(' ')
+#
 # save cleaned csv dataset
 stndata_df.to_csv(cleaneddatafile)
 message('saved cleaned NCEI dataset to %s' % cleaneddatafile)
 stnerr_df.to_csv(errorsdatafile)
 message('saved station-by-station error counts to %s' % errorsdatafile)
+stnmeta_df.to_csv(stnmetadatafile)
+message('saved station metadataset to %s' % stnmetadatafile)
 message(' ')
 #
 # initialize HDF5 file for use in next script "process_NCEI_01.py"
