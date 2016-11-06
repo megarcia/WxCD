@@ -10,7 +10,8 @@ Send questions, bug reports, any related requests to matt.e.garcia@gmail.com
 Treat others as you would be treated. Pay it forward. Valar dohaeris.
 
 PURPOSE: Gridded interpolation of daily PRCP/TMAX/TMIN station data from
-         cleaned NOAA/NCEI dataset via user's method of choice.
+         cleaned NOAA/NCEI dataset via user's method of choice, and calculation
+         of daily TAVG/VPD from those grids.
 
 CHOICES: RBF - multiquadric radial basis functions, a SciPy built-in method
          CSP - cubic splines via griddata, a SciPy built-in method
@@ -55,7 +56,7 @@ NOTE: If you don't have an NLCD map of your study region, you can spoof the
 
 OUTPUT: Daily '.h5' file with original met data and gridded fields (1 / day)
         (with the naming convention 'grids/[YYYYMMDD]_NCEI_grids_1.h5')
-        Corresponding plotted fields in 'images/*.png' (4 / day)
+        Corresponding plotted fields in 'images/*.png' (5 / day)
 """
 
 
@@ -158,6 +159,16 @@ def process_grid_rbf(xgrid, ygrid, stns_e, stns_n, stns_vals):
     grid_var = Interpolation.scipy_rbf(stns_e, stns_n, stns_vals,
                                        xgrid, ygrid)
     return grid_var
+
+
+def calc_esat(temp):
+    """
+    calculates saturation vapor pressure [Pa] for the given Temp [degC]
+    """
+    num = 17.269 * temp
+    den = 237.3 + temp
+    esat = 610.78 * np.exp(num / den)
+    return esat
 
 
 message(' ')
@@ -369,6 +380,12 @@ for date in dates:
     grid_tavg = (grid_tmin + grid_tmax) / 2.0
     tavg_stns = list(set(tmax_stns) | set(tmin_stns))
     message('- calculated TAVG grid and station set')
+    # calculate vapor pressure deficit
+    tavg_daytime = 0.606 * grid_tmax + 0.394 * grid_tmin
+    esat_tavg = calc_esat(tavg_daytime)
+    esat_tmin = calc_esat(grid_tmin)
+    grid_vpd = esat_tavg - esat_tmin
+    message('- calculated VPD grid')
     #
     h5outfname = '%s/%d_NCEI_grids_1.h5' % (path, date)
     message('writing grids to %s' % h5outfname)
@@ -380,7 +397,8 @@ for date in dates:
                                  data='M. Garcia, UWisconsin-Madison FWE')
         h5outfile.create_dataset('meta/last_updated',
                                  data=datetime.datetime.now().isoformat())
-        h5outfile.create_dataset('meta/at', data='prcp/tmax/tmin/tavg grids')
+        h5outfile.create_dataset('meta/at',
+                                 data='prcp/tmax/tmin/tavg/vpd grids')
         message('- saved processing metadata items')
         #
         h5outfile.create_dataset('grid/UTMzone', data=UTMzone)
@@ -435,6 +453,9 @@ for date in dates:
                                  dtype=np.float32, compression='gzip')
         message('- saved TAVG grid %s with %d stations' %
                 (str(grid_tavg.shape), len(tavg_stns)))
+        h5outfile.create_dataset('grid_vpd', data=grid_vpd,
+                                 dtype=np.float32, compression='gzip')
+        message('- saved VPD grid %s' % str(grid_vpd.shape))
     #
     if plots:
         message('plotting grids')
@@ -458,6 +479,11 @@ for date in dates:
             (path, date, interp_method.lower())
         t_map_plot(tmin_east, tmin_north, tmin_vals, min_x, max_x, min_y,
                    max_y, grid_tavg, UTMzone, titlestr, filename, stations=0)
+        titlestr = '%d VPD (Pa) via %s' % (date, interp_method)
+        filename = '%s/../images/%d_%s_vpd.png' % \
+            (path, date, interp_method.lower())
+        t_map_plot(tmin_east, tmin_north, tmin_vals, min_x, max_x, min_y,
+                   max_y, grid_vpd, UTMzone, titlestr, filename, stations=0)
     message(' ')
 #
 message('process_NCEI_02b.py completed at %s' %
