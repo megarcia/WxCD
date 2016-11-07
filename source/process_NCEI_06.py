@@ -14,7 +14,7 @@ Treat others as you would be treated. Pay it forward. Valar dohaeris.
 PURPOSE: Summarizing key meteorological variables on a daily basis
 
 DEPENDENCIES: h5py, numpy
-              The 'Date_Convert' module has no external requirements
+              'Date_Convert' module has no external requirements
 
 USAGE: '$ python process_NCEI_06.py 1984 2013 ./grids'
 

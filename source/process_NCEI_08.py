@@ -14,8 +14,8 @@ Treat others as you would be treated. Pay it forward. Valar dohaeris.
 PURPOSE: Generate land mask for maps, based on map of EPA Level-IV ecoregions
 
 DEPENDENCIES: h5py, numpy, scipy.ndimage
-              The 'Read_Header_Files' module has no external requirements
-              The 'Plots' module has its own requirements
+              'Read_Header_Files' module has no external requirements
+              'Plots' module has its own requirements
 
 USAGE: '$ python process_NCEI_08.py EPA_L4_Ecoregions_WLS_UTM15N ./data'
 

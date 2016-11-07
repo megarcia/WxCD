@@ -18,7 +18,7 @@ PURPOSE: Aggregating grids for specific dates and time periods over the
          GDD) of CD plateau. Numerous variables are addressed.
 
 DEPENDENCIES: h5py, numpy
-              The 'Date_Convert' module has no external requirements
+              'Date_Convert' module has no external requirements
 
 USAGE: '$ python process_NCEI_04a.py 1984 2013 ./grids'
 

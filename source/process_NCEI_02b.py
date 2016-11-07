@@ -31,8 +31,8 @@ NOTES: RBF is an exact full-domain method with an excellent daily processing
        bull's-eye patterns that are difficult to smooth out.
 
 DEPENDENCIES: h5py, numpy
-              'UTM_Geo_Convert', 'Interpolation', and 'Plots' modules
-              (which have their own requirements)
+              'UTM_Geo_Convert', 'Interpolation', and 'Plots' modules have
+                their own requirements
 
 USAGE: '$ python process_NCEI_02b.py NLCD_2011_WLS_UTM15N
         NCEI_WLS_19840101-20131231 ./grids 500 RBF 1'

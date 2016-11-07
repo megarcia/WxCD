@@ -14,7 +14,7 @@ Treat others as you would be treated. Pay it forward. Valar dohaeris.
 PURPOSE: Generate maps of numerous variables on annual and summary bases
 
 DEPENDENCIES: h5py, numpy
-              The 'Plots' module has its own requirements
+              'Plots' module has its own requirements
 
 USAGE: '$ python process_NCEI_09.py 1984 2013 ./analyses 1 1'
 

@@ -18,7 +18,7 @@ PURPOSE: Summarizing several T/P seasonal and cold/warm gridded season
          season correlations)
 
 DEPENDENCIES: h5py, numpy, scipy.stats
-              The 'Date_Convert' module has no external requirements
+              'Date_Convert' module has no external requirements
 
 USAGE: '$ python process_NCEI_05.py 1984 2013 ./analyses'
 

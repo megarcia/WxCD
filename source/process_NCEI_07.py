@@ -17,8 +17,8 @@ PURPOSE: Plotting meteorological variables on daily/seasonal/annual/decadal
 NOTE: These are special plots (not maps) for publication figures
 
 DEPENDENCIES: h5py, numpy
-              The 'Date_Convert' module has no external requirements
-              The 'Plots' module has its own requirements
+              'Date_Convert' module has no external requirements
+              'Plots' module has its own requirements
 
 USAGE: '$ python process_NCEI_07.py 1984 2013 ./analyses'
 
