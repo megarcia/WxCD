@@ -21,7 +21,7 @@ DEPENDENCIES: numpy, scipy
 USAGE: insert 'import Interpolation' line near head of script
        see usage examples in 'process_NCEI_02.py'
 
-INPUT: location/value arrays rovided by calling script
+INPUT: location/value arrays provided by calling script
 
 OUTPUT: grids returned to calling script
 """
@@ -100,3 +100,5 @@ def bilinear(x0, dx, y0, dy, z, ix, iy):
     #
     zi = wgta * ima + wgtb * imb + wgtc * imc + wgtd * imd
     return zi
+
+# end Interpolation.py
