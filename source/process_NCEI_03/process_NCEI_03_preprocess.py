@@ -15,7 +15,7 @@ PURPOSE: Copy *_grids_1.h5 files to *_grids_2.h5
 
 DEPENDENCIES: h5py, numpy
 
-USAGE: '$ python process_NCEI_03_preprocess_sc.py NCEI_WLS_1983 1983 ./grids'
+USAGE: '$ python process_NCEI_03_preprocess.py NCEI_WLS_1983 1983 ./grids'
 
 INPUT: '.h5' output files from process_NCEI_02.py
        (with the naming convention 'grids/[YYYYMMDD]_NCEI_grids_1.h5')
