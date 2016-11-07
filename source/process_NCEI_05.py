@@ -38,7 +38,6 @@ import glob
 import h5py as hdf
 import numpy as np
 from scipy.stats import linregress, pearsonr
-# from Date_Convert import *
 
 
 def message(char_string):
