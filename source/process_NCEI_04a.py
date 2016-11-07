@@ -23,7 +23,8 @@ DEPENDENCIES: h5py, numpy
 USAGE: '$ python process_NCEI_04a.py 1984 2013 ./grids'
 
 INPUT: '.h5' output files from process_NCEI_03.py
-       (with the naming convention 'grids/[YYYYMMDD]_NCEI_grids_2.h5')
+       (with the naming convention
+        'grids/[YYYYMMDD]_NCEI_grids_2.h5')
 
 OUTPUT: '.h5' file with aggregated grid datacubes
         (with the naming convention
