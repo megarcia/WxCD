@@ -28,7 +28,6 @@ OUTPUT: Copied '.h5' files (1 / day)
 import os
 import sys
 import datetime
-import glob
 import h5py as hdf
 import numpy as np
 
