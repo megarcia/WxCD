@@ -10,7 +10,7 @@ analyses [Garcia and Townsend, 2016]."
 
 where [Garcia and Townsend, 2016] is the published article found at
 
-http://dx.doi.org/10.1029/2016JD025190RR
+http://dx.doi.org/10.1002/2016JD025190
 
 An appropriate bibliographical citation in AMS style is:
 
