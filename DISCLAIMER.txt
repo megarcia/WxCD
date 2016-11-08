@@ -7,6 +7,13 @@ published by the Free Software Foundation, either version 3 of the License, or
 General Public License ('LICENSE_GnuGPLv3.txt') along with this software. If
 not, see http://www.gnu.org/licenses/.
 
+All python scripts in this package were written for compatibility with Python
+v2.7. We assume no responsibility for differences in functionality (and
+resulting errors) if you use these scripts with Python v3.x. We will, however,
+attempt to work into ongoing upgrades those fixes compatible with Python v3.x
+that do not break the Python v2.7 functionality, so please still report those
+"bugs" via GitHub or email as you find them.
+
 Essential disclaimer of liability follows:
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER(S) AND CONTRIBUTORS "AS IS"
