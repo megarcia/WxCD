@@ -3,14 +3,14 @@
 universe = vanilla
 log = process_NCEI_03_$(var)_$(year).log
 error = process_NCEI_03_$(var)_$(year).err
-executable = process_NCEI_03_$(var)_sc.sh
+executable = process_NCEI_03_$(var).sh
 arguments = $(year)
 output = process_NCEI_03_$(var)_$(year).out
 should_transfer_files = YES
 when_to_transfer_output = ON_EXIT
-transfer_input_files = process_NCEI_03_$(var)_sc.py
+transfer_input_files = process_NCEI_03_$(var).py,process_NCEI_03_aux.py
 request_cpus = 1
 request_memory = $(mem)
 request_disk = 8GB
-requirements = (OpSys == "LINUX") && (OpSysMajorVer == 6)
+requirements = (OpSys == "LINUX") && (OpSysMajorVer == 6) && (Target.HasGluster == true)
 queue 1
