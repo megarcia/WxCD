@@ -15,7 +15,7 @@ PURPOSE: Calculate climatological statistics over time on grid-wide and
          ecoregion areas
 
 DEPENDENCIES: h5py, numpy, scipy
-              The 'Stats' and 'Plots' modules have their own requirements
+              'Stats' and 'Plots' modules have their own requirements
 
 USAGE: '$ python process_NCEI_10.py ecoregion_polygonIDs.txt 1984 2013
           ./analyses'
