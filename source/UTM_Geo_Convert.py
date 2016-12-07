@@ -5,7 +5,7 @@ Dept. of Forest and Wildlife Ecology
 University of Wisconsin - Madison
 matt.e.garcia@gmail.com
 
-Copyright (C) 2015-2016 by Matthew Garcia
+Copyright (C) 2014-2016 by Matthew Garcia
 heavily modified from python source code found at
 http://stackoverflow.com/questions/343865/how-to-convert-from-utm-to-latlng-in-python-or-javascript/10239676
 Licensed Gnu GPL v3; see 'LICENSE_GnuGPLv3.txt' for complete terms
@@ -29,15 +29,18 @@ INPUT: coordinates provided by calling script
 OUTPUT: coordinates returned to calling script
 """
 
+
 from osgeo import osr  # uses GDAL via osr-to-python bindings
 
 
 def get_utm_zone(lon):
+    """ get proper UTM zone based on longitude """
     zone = int(1 + (lon + 180.0) / 6.0)
     return zone
 
 
 def is_northern(lat):
+    """ check if latitude is in Northern Hemisphere (thus + northing) """
     if lat < 0.0:
         return 0
     else:
@@ -45,6 +48,10 @@ def is_northern(lat):
 
 
 def utm_to_geographic(easting, northing, zone):
+    """
+    convert from UTM coordinates (zone, easting, northing)
+            to geographic coordinates (longitude, latitude)
+    """
     utm_coordinate_system = osr.SpatialReference()
     # Set unprojected geographic coordinate system
     utm_coordinate_system.SetWellKnownGeogCS("WGS84")
@@ -55,12 +62,16 @@ def utm_to_geographic(easting, northing, zone):
     utm_to_geog_transform = \
         osr.CoordinateTransformation(utm_coordinate_system,
                                      geog_coordinate_system)
-    # Note returned 'alt' is unused, thus '_'
+    # Note returned 'alt' (altitude) is currently unused, thus '_'
     lon, lat, _ = utm_to_geog_transform.TransformPoint(easting, northing, 0)
     return lon, lat
 
 
 def geographic_to_utm(lon, lat, zonepref=-1):
+    """
+    convert from geographic coordinates (longitude, latitude)
+            to UTM coordinates (zone, easting, northing)
+    """
     utm_coordinate_system = osr.SpatialReference()
     # Set unprojected geographic coordinate system
     utm_coordinate_system.SetWellKnownGeogCS("WGS84")
@@ -75,12 +86,18 @@ def geographic_to_utm(lon, lat, zonepref=-1):
     geog_to_utm_transform = \
         osr.CoordinateTransformation(geog_coordinate_system,
                                      utm_coordinate_system)
-    # Note returned 'alt' is unused, thus '_'
+    # Note returned 'alt' (altitude) is currently unused, thus '_'
     easting, northing, _ = geog_to_utm_transform.TransformPoint(lon, lat, 0)
     return zone, easting, northing
 
 
 def utm_to_utm(easting_in, northing_in, zone_in, zone_out):
+    """
+    convert from UTM coordinates (zone_in, easting, northing)
+            to UTM coordinates (zone_out, easting, northing)
+    generally only useful for coordinate translation near edges
+        of neighboring zones
+    """
     utm_coordinate_system_in = osr.SpatialReference()
     # Set unprojected geographic coordinate system
     utm_coordinate_system_in.SetWellKnownGeogCS("WGS84")
@@ -95,7 +112,7 @@ def utm_to_utm(easting_in, northing_in, zone_in, zone_out):
     utm_to_utm_transform = \
         osr.CoordinateTransformation(utm_coordinate_system_in,
                                      utm_coordinate_system_out)
-    # Note returned 'alt' is unused, thus '_'
+    # Note returned 'alt' (altitude) is currently unused, thus '_'
     easting_out, northing_out, _ = \
         utm_to_utm_transform.TransformPoint(easting_in, northing_in, 0)
     return zone_out, easting_out, northing_out
