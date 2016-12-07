@@ -16,7 +16,7 @@ An appropriate bibliographical citation in AMS style is:
 
 Garcia, M., and P.A. Townsend, 2016: "Recent climatological trends and
 potential influences on forest phenology around western Lake Superior, USA."
-Submitted to J. Geophys. Res. Atmos. on 5 April 2016, accepted 5 November 2016.
+J. Geophys. Res. Atmos., v. 121, doi: 10.1002/2016JD025190.
 
 An updated citation and a pdf of the paper will be included with this software
 upon publication.

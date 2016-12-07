@@ -4,7 +4,7 @@
 
 This software package for regional climatological analysis using NOAA NCEI GHCN-Daily datasets is a component of the author's Ph.D. dissertation research at the University of Wisconsin–Madison and accompanies the paper
 
-> Garcia, M., and P.A. Townsend (in review): "Recent climatological trends and potential influences on forest phenology around western Lake Superior, USA." Submitted to the *Journal of Geophysical Research – Atmospheres* on 5 April 2016, revised 20 August 2016.
+> Garcia, M., and P.A. Townsend (2016): "Recent climatological trends and potential influences on forest phenology around western Lake Superior, USA." *Journal of Geophysical Research – Atmospheres*, v. 121, doi: [10.1002/2016JD025190](http://dx.doi.org/10.1002/2016JD025190).
 
 That paper manuscript will be included in this package upon acceptance for publication. The corresponding author is Matthew Garcia (<matt.e.garcia@gmail.com>). Prof. Townsend is the author's dissertation advisor.
 
@@ -33,9 +33,9 @@ All python scripts in this package were written for compatibility with python v2
 
 ## <a name="acknowledgements"></a> Acknowledgements
 
-Support for this work was provided by the USDA Forest Service–Northern Research Station, USDA NIFA McIntire–Stennis funding to the University of Wisconsin–Madison (project WIS01621), UW–Madison College of Agricultural and Life Sciences, NASA Biodiversity and Ecological Forecasting Project NNX14AC36G, the author’s 2015-2016 Wisconsin Space Grant Consortium Research Fellowship, and the author's Spring 2016 UW–Madison Department of Forest & Wildlife Ecology Research Fellowship. 
+Support for this work was provided by the USDA Forest Service–Northern Research Station, USDA NIFA McIntire–Stennis funding to the University of Wisconsin–Madison (project WIS01621), UW–Madison College of Agricultural and Life Sciences, NASA Biodiversity and Ecological Forecasting Project NNX14AC36G, the author’s 2015-2016 Wisconsin Space Grant Consortium Research Fellowship, and the author's Spring 2016 UW–Madison Department of Forest & Wildlife Ecology Research Fellowship.
 
-Portions of this work were developed using the computing resources and assistance of the UW–Madison Center For High Throughput Computing (CHTC) in the Department of Computer Sciences. The CHTC is supported by UW–Madison, the Advanced Computing Initiative, the Wisconsin Alumni Research Foundation, the Wisconsin Institutes for Discovery, and the National Science Foundation, and is an active member of the Open Science Grid, which is supported by the National Science Foundation and the US Department of Energy's Office of Science. 
+Portions of this work were developed using the computing resources and assistance of the UW–Madison Center For High Throughput Computing (CHTC) in the Department of Computer Sciences. The CHTC is supported by UW–Madison, the Advanced Computing Initiative, the Wisconsin Alumni Research Foundation, the Wisconsin Institutes for Discovery, and the National Science Foundation, and is an active member of the Open Science Grid, which is supported by the National Science Foundation and the US Department of Energy's Office of Science.
 
 Supporting entities assume neither responsibility for, nor ownership of, the intellectual property in this work.
 
@@ -45,7 +45,7 @@ Supporting entities assume neither responsibility for, nor ownership of, the int
 
 ## <a name="setup"></a> Setup
 
-After you have cloned, forked, or otherwise downloaded this software package, in the main directory run 
+After you have cloned, forked, or otherwise downloaded this software package, in the main directory run
 
 `$ python setup.py`
 
@@ -55,7 +55,7 @@ which will
 2. verify availability of python dependencies used by the various scripts (listed below)
 3. uncompress certain large example data files
 4. build directory structure to receive script processing outputs
-5. copy source scripts, modules, and tools into main package directory, then archive the originals 
+5. copy source scripts, modules, and tools into main package directory, then archive the originals
 
 [Back to top](#top)
 
@@ -84,7 +84,7 @@ All of these modules are invoked and/or aliased using
 
 `import <module>` or `import <module> as <alias>`
 
-near the head of the calling script, so subroutines are called according to the 
+near the head of the calling script, so subroutines are called according to the
 
 `<module>.<subroutine>` or `<alias>.<subroutine>`
 
@@ -97,7 +97,7 @@ In addition to those, this package contains several original python modules:
 * **Plots.py** contains all plotting and mapping interaction with **matplotlib**
 * **Read\_Header\_Files.py** is for use with ArcGIS-style header files that accompany binary datasets
 * **Stats.py** contains routines providing a specific collection of statistics, including trends and *p*-values, using **numpy** and **scipy**
-* **Teleconnections.py** is used to read and process NCEP and similarly-formatted climate teleconnection index datasets 
+* **Teleconnections.py** is used to read and process NCEP and similarly-formatted climate teleconnection index datasets
 * **UTM\_Geo\_Convert.py** converts between lat/lon (geographic) and UTM coordinate systems using **gdal** and **osgeo.osr**
 
 Except for the **Interpolation** module, all of these modules are invoked using
@@ -108,7 +108,7 @@ near the head of the calling script, so subroutines are called directly. **Inter
 
 `import Interpolation`
 
-at the head of the calling script, and subroutines are called according to the 
+at the head of the calling script, and subroutines are called according to the
 
 `Interpolation.<subroutine>`
 
@@ -156,7 +156,7 @@ These procedures were developed to work with [GHCN-Daily](http://www.ncdc.noaa.g
 
 Your daily meteorological station dataset should start *at least* 6 months (preferably a full calendar year) prior to the start of your desired climatological analysis period, because of the way that these climatological derivatives are accumulated over as much as one year, and because some of the critical seasonal indicators (CD, GDD) are reset on alternating cycles. This is the reason that our own dataset begins on 1 Jan 1983 but our analysis period actually begins in 1984.
 
-Note that the user is expected to proceed through these scripts in numerical sequence, though some tolerances are included in case you need to go back to change and re-run a script. For those scripts that use ParallelPython, some specific notes regarding execution are provided below. For some of these, serial versions are also provided in this code package. 
+Note that the user is expected to proceed through these scripts in numerical sequence, though some tolerances are included in case you need to go back to change and re-run a script. For those scripts that use ParallelPython, some specific notes regarding execution are provided below. For some of these, serial versions are also provided in this code package.
 
 1. **process\_NCEI\_00.py**  
 <u>Function</u>: QA/QC ('cleaning') of daily meteorological station data in NOAA/NCEI GHCN-Daily datasets  
@@ -237,7 +237,7 @@ where the beginning and ending years of the analysis period are given
 
 ### <a name="pp"></a> Notes regarding our use of ParallelPython (pp)
 
-[ParallelPython](http://www.parallelpython.com/) is used in three of the scripts above: **process\_NCEI\_02.py**, **process\_NCEI\_03.py**, and **process\_NCEI\_04.py**. In all of these, the code is written for execution on a single-node multi-processor (SMP) system. On a linux system you can run `$ nproc` or `$ lscpu` to find out how many processors/cores are available. Where the number of **pp** processors is requested in a script, that number does *not* include the processor on which the main script is already runnning. For example, if you have one 4-processor system, in SMP mode you can only request 3 processors for **pp** usage. If you have a cluster (multiple systems, each with multiple processors) you can change the **pp** specifications to take fuller advantage of your cluster capabilities, but the limitation then becomes the contruction of the loops involved—they would need to be rewritten entirely for better use of cluster parallelization, and then still only **process\_NCEI\_02.py** and **process\_NCEI\_04.py** would likely benefit from that particular change. 
+[ParallelPython](http://www.parallelpython.com/) is used in three of the scripts above: **process\_NCEI\_02.py**, **process\_NCEI\_03.py**, and **process\_NCEI\_04.py**. In all of these, the code is written for execution on a single-node multi-processor (SMP) system. On a linux system you can run `$ nproc` or `$ lscpu` to find out how many processors/cores are available. Where the number of **pp** processors is requested in a script, that number does *not* include the processor on which the main script is already runnning. For example, if you have one 4-processor system, in SMP mode you can only request 3 processors for **pp** usage. If you have a cluster (multiple systems, each with multiple processors) you can change the **pp** specifications to take fuller advantage of your cluster capabilities, but the limitation then becomes the contruction of the loops involved—they would need to be rewritten entirely for better use of cluster parallelization, and then still only **process\_NCEI\_02.py** and **process\_NCEI\_04.py** would likely benefit from that particular change.
 
 Depending on the duration of your study period, the size of your study area (thus grid size), and the speed of your system/cluster CPUs, **process\_NCEI\_02.py** and **process\_NCEI\_03.py** can take a long time to run. For our study (524 x 611 grid, ~33 data years) on a 3.0GHz SMP system, **process\_NCEI\_02.py** using 3 processors (plus one for the master process) took ~30.5 hours, **process\_NCEI\_03.py** using 8 processors (plus one for the master process) took ~48 hours, and **process\_NCEI\_04.py** using 6 processors (plus one for the master process) took less than 5 hours.
 
@@ -287,7 +287,7 @@ for date in dates:
         ...
     ...
 ...     
-        
+
 job_server0.destroy()  # releases those requested processors cleanly
 
 ```
@@ -315,7 +315,7 @@ and edit it to start at the *n*th date:
 `for date in dates[n:]:`  
 When you start the script running again (using the same command as the previous time) you should find that it picks up with the next date in the sequence. If not, stop the process, adjust your *n* accordingly, and try again.
 
-If your **process\_NCEI\_03.py** execution stops, the only option currently available is to start it over from the beginning, because the temporal accumulation datacubes are not saved outside of the execution memory. We made that decision during development based on I/O speed vs processing time, and because a dedicated SMP system was available to us. However, with access to larger systems, we are currently working on an alternative version using saved variables at designated checkpoints (e.g. yearly) to minimize data loss and reprocessing time in case of a crash, and to optimize execution and file management on systems with limited disk space or processing times. We will post that new script version here with updated instructions as soon as it's completed and tested. 
+If your **process\_NCEI\_03.py** execution stops, the only option currently available is to start it over from the beginning, because the temporal accumulation datacubes are not saved outside of the execution memory. We made that decision during development based on I/O speed vs processing time, and because a dedicated SMP system was available to us. However, with access to larger systems, we are currently working on an alternative version using saved variables at designated checkpoints (e.g. yearly) to minimize data loss and reprocessing time in case of a crash, and to optimize execution and file management on systems with limited disk space or processing times. We will post that new script version here with updated instructions as soon as it's completed and tested.
 
 Yes, it's all very complicated, but then you're a scientist. If you're using this package rather than something that ends with '.exe', you also likely have some knowledge of Python (or other programming languages), or you may have access to someone who can help you figure it out. We have confidence in you. If all else fails, email us.
 
@@ -402,7 +402,7 @@ where **ecoregion\_polygonIDs.txt** is as for **process\_NCEI\_10.py**, and the 
     </msup>
   </mrow>
 </math>
-as decribed in our paper using the Pearson correlation coefficient 
+as decribed in our paper using the Pearson correlation coefficient
 <math fontsize="12pt" display="inline">
   <mrow>
     <mi>R</mi>
@@ -483,7 +483,7 @@ In order to reproduce *exactly* the ecoregion cluster map and statistical result
     <mn>)</mn>
   </mrow>
 </math>
-values more than 2 standard deviations below the mean inter-cluster dissimilarity value. We manually edited the ecoregion clusters '.txt' file (in the 'analyses' subdirectory) that was produced by **process\_NCEI\_12.py** to combine only those cluster pairs with 
+values more than 2 standard deviations below the mean inter-cluster dissimilarity value. We manually edited the ecoregion clusters '.txt' file (in the 'analyses' subdirectory) that was produced by **process\_NCEI\_12.py** to combine only those cluster pairs with
 <math fontsize="12pt" display="inline">
   <mrow>
     <mi>D</mi>
